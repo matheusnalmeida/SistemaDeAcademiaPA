@@ -1,0 +1,1 @@
+##### Sistema de academia desenvolvido para a matéria de progamação avançada com uso da linguagem c++ e framework qt
