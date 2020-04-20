@@ -8,12 +8,6 @@ Login_Screen::Login_Screen(QWidget *parent) :
     ui(new Ui::Login_Screen)
 {
     ui->setupUi(this);
-    //Imagem de fundo
-    QPixmap bkgnd("src/resources/login_background.jpg");
-    bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
-    QPalette palette;
-    palette.setBrush(QPalette::Background, bkgnd);
-    this->setPalette(palette);
     //Imagem do label principal ta tela de login
     QPixmap pix_main_login("src/resources/icone_academia.png");
     this->ui->label_main_login->setPixmap(pix_main_login);
