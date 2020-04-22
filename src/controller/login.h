@@ -2,7 +2,6 @@
 #define LOGIN_H
 
 #include <QWidget>
-#include "teladecadastro.h"
 
 namespace Ui {
 class Login_Screen;
@@ -22,7 +21,6 @@ private slots:
 
 private:
     Ui::Login_Screen *ui;
-    TelaDeCadastro* telaDeCadastro;
     void closeEvent(QCloseEvent *event);
 };
 

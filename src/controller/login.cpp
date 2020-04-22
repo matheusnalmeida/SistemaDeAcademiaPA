@@ -1,10 +1,11 @@
 #include "login.h"
 #include "ui_login.h"
+#include "dialogcadastro.h"
 #include <QMessageBox>
 #include <QDebug>
 #include <QCloseEvent>
-#include "teladecadastro.h"
 #include <QMainWindow>
+
 
 Login_Screen::Login_Screen(QWidget *parent) :
     QWidget(parent),
@@ -44,7 +45,7 @@ void Login_Screen::on_login_button_clicked()
 
 void Login_Screen::on_cadastrar_button_clicked()
 {
-    TelaDeCadastro* buscarFrame = new TelaDeCadastro(nullptr,this);
-    buscarFrame->show();
-    this->hide();
+    this->close();
+    DialogCadastro cadastro_dialog(nullptr,this);
+    cadastro_dialog.exec();
 }
