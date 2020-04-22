@@ -17,13 +17,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     src/controller/login.cpp \
-    src/view/main.cpp
+    src/view/main.cpp \
+    src/controller/teladecadastro.cpp
 
 HEADERS += \
-    src/controller/login.h
+    src/controller/login.h \
+    src/controller/teladecadastro.h
 
 FORMS += \
-    src/view/login.ui
+    src/view/login.ui \
+    src/view/teladecadastro.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

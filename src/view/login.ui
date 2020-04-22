@@ -908,7 +908,7 @@ border-radius: 5px;</string>
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="pushButton">
+               <widget class="QPushButton" name="cadastrar_button">
                 <property name="font">
                  <font>
                   <family>Consolas</family>
