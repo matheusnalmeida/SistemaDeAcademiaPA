@@ -19,19 +19,25 @@ SOURCES += \
     src/controller/dialogcadastro.cpp \
     src/controller/login.cpp \
     src/view/main.cpp \
-    src/controller/teladecadastro.cpp
+    src/controller/teladecadastro.cpp \
+    src/controller/teladeusuario.cpp \
 
 HEADERS += \
     src/controller/dialogcadastro.h \
     src/controller/login.h \
-    src/controller/teladecadastro.h
+    src/controller/teladecadastro.h \
+    src/controller/teladeusuario.h \
 
 FORMS += \
     src/view/dialogcadastro.ui \
     src/view/login.ui \
-    src/view/teladecadastro.ui
+    src/view/teladecadastro.ui \
+    src/view/teladeusuario.ui \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    banco_imagem.qrc

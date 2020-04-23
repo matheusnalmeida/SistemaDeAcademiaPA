@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/imagem">
+        <file>src/resources/icone_academia.png</file>
+        <file>src/resources/password_icon.png</file>
+        <file>src/resources/username_icon.png</file>
+        <file>src/resources/imagem_icon.jpg</file>
+    </qresource>
+</RCC>
