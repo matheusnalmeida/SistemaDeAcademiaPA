@@ -40,7 +40,7 @@ Login_Screen::~Login_Screen()
 
 void Login_Screen::on_login_button_clicked()
 {
-    teladeusuario *tela = new teladeusuario();
+    teladeusuario *tela = new teladeusuario(nullptr,this);
     tela->show();
     this->hide();
 }

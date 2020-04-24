@@ -19,26 +19,25 @@ SOURCES += \
     src/controller/dialogmostrartreino.cpp \
     src/controller/bancodedados.cpp \
     src/controller/dialogcadastro.cpp \
+    src/controller/endereco.cpp \
     src/controller/login.cpp \
     src/controller/pessoa.cpp \
     src/view/main.cpp \
-    src/controller/teladecadastro.cpp \
     src/controller/teladeusuario.cpp \
 
 HEADERS += \
     src/controller/dialogmostrartreino.h \
     src/controller/bancodedados.h \
     src/controller/dialogcadastro.h \
+    src/controller/endereco.h \
     src/controller/login.h \
     src/controller/pessoa.h \
-    src/controller/teladecadastro.h \
     src/controller/teladeusuario.h \
 
 FORMS += \
     src/view/dialogmostrartreino.ui \
     src/view/dialogcadastro.ui \
     src/view/login.ui \
-    src/view/teladecadastro.ui \
     src/view/teladeusuario.ui \
 
 # Default rules for deployment.
