@@ -10,6 +10,8 @@ DialogCadastro::DialogCadastro(QWidget *parent,QWidget *prev_window) :
 {
     ui->setupUi(this);
     this->prev_window = prev_window;
+    this->matricula_generator = new MatriculaGenerator();
+    //Colocando sombra na janela de dialogo
     QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect();
     effect->setBlurRadius(5);
     ui->widget->setGraphicsEffect(effect);
@@ -22,6 +24,7 @@ DialogCadastro::DialogCadastro(QWidget *parent,QWidget *prev_window) :
 DialogCadastro::~DialogCadastro()
 {
     delete ui;
+    delete matricula_generator;
 }
 
 void DialogCadastro::show_received_data(QNetworkReply* reply){

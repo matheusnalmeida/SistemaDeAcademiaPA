@@ -9,7 +9,6 @@ teladeusuario::teladeusuario(QWidget *parent,QWidget *prev_window) :
 {
     ui->setupUi(this);
     this->prev_window = prev_window;
-    this->matricula_generator = new MatriculaGenerator();
     //Colcando icones na tela
     QPixmap pix_icon(":/imagem/src/resources/imagem_icon.jpg");
     this->ui->icon_default->setPixmap(pix_icon);
@@ -18,7 +17,6 @@ teladeusuario::teladeusuario(QWidget *parent,QWidget *prev_window) :
 teladeusuario::~teladeusuario()
 {
     delete ui;
-    delete this->matricula_generator;
 }
 
 void teladeusuario::closeEvent(QCloseEvent *event){

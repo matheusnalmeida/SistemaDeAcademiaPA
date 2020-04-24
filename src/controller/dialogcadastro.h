@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QtNetwork>
+#include "src/utils/matriculagenerator.h"
 
 namespace Ui {
 class DialogCadastro;
@@ -24,6 +25,7 @@ private slots:
 private:
     Ui::DialogCadastro *ui;
     QWidget *prev_window;
+    MatriculaGenerator* matricula_generator;
 };
 
 #endif // DIALOGCADASTRO_H
