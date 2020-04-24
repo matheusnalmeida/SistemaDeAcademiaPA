@@ -17,22 +17,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     src/controller/dialogmostrartreino.cpp \
-    src/controller/bancodedados.cpp \
+    src/model/bancodedados.cpp \
     src/controller/dialogcadastro.cpp \
-    src/controller/endereco.cpp \
+    src/utils/cpfinvalidoexception.cpp \
+    src/model/endereco.cpp \
     src/controller/login.cpp \
-    src/controller/pessoa.cpp \
+    src/model/pessoa.cpp \
+    src/utils/matriculagenerator.cpp \
     src/view/main.cpp \
     src/controller/teladeusuario.cpp \
 
 HEADERS += \
     src/controller/dialogmostrartreino.h \
-    src/controller/bancodedados.h \
+    src/model/bancodedados.h \
     src/controller/dialogcadastro.h \
-    src/controller/endereco.h \
+    src/utils/cpfinvalidoexception.h \
+    src/model/endereco.h \
     src/controller/login.h \
-    src/controller/pessoa.h \
-    src/controller/teladeusuario.h \
+    src/model/pessoa.h \
+    src/controller/teladeusuario.h \ \
+    src/utils/matriculagenerator.h
 
 FORMS += \
     src/view/dialogmostrartreino.ui \

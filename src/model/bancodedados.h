@@ -2,7 +2,7 @@
 #define BANCODEDADOS_H
 #include <map>
 #include <QRegularExpression>
-#include "pessoa.h";
+#include "src/model/pessoa.h"
 
 class BancoDeDados
 {

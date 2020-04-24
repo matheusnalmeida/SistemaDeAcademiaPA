@@ -12,6 +12,7 @@ Login_Screen::Login_Screen(QWidget *parent) :
     ui(new Ui::Login_Screen)
 {
     ui->setupUi(this);
+    this->tela_de_cadastro = new DialogCadastro(nullptr,this);
     //Imagem do label principal ta tela de login
     QPixmap pix_main_login(":/imagem/src/resources/icone_academia.png");
     this->ui->label_main_login->setPixmap(pix_main_login);
@@ -26,8 +27,6 @@ Login_Screen::Login_Screen(QWidget *parent) :
 void Login_Screen::closeEvent(QCloseEvent *event){
     if (event->spontaneous()) {
         QMessageBox::about(this,"My Title","Hello");
-        // do event->ignore();
-        // or QWidget::closeEvent(event);
     } else {
         QWidget::closeEvent(event);
     }
@@ -36,6 +35,7 @@ void Login_Screen::closeEvent(QCloseEvent *event){
 Login_Screen::~Login_Screen()
 {
     delete ui;
+    delete tela_de_cadastro;
 }
 
 void Login_Screen::on_login_button_clicked()
@@ -48,6 +48,5 @@ void Login_Screen::on_login_button_clicked()
 void Login_Screen::on_cadastrar_button_clicked()
 {
     this->close();
-    DialogCadastro cadastro_dialog(nullptr,this);
-    cadastro_dialog.exec();
+    this->tela_de_cadastro->exec();
 }

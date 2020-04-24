@@ -2,6 +2,7 @@
 #define TELADEUSUARIO_H
 
 #include <QWidget>
+#include "src/utils/matriculagenerator.h"
 
 namespace Ui {
 class teladeusuario;
@@ -18,6 +19,7 @@ public:
 private:
     Ui::teladeusuario *ui;
     QWidget *prev_window;
+    MatriculaGenerator* matricula_generator;
     void closeEvent(QCloseEvent *event);
 };
 

@@ -2,6 +2,7 @@
 #define LOGIN_H
 
 #include <QWidget>
+#include "dialogcadastro.h"
 
 namespace Ui {
 class Login_Screen;
@@ -20,7 +21,10 @@ private slots:
     void on_cadastrar_button_clicked();
 
 private:
+    //Atributos
     Ui::Login_Screen *ui;
+    DialogCadastro* tela_de_cadastro;
+    //Metodos
     void closeEvent(QCloseEvent *event);
 };
 
