@@ -16,6 +16,7 @@ class DialogCadastro : public QDialog
 
 public:
     explicit DialogCadastro(QWidget *parent = nullptr,QWidget *prev_window = nullptr,BancoDeDados* banco_de_dados = nullptr);
+    void limparCampos();
     ~DialogCadastro();
 
 private slots:

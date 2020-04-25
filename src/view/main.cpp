@@ -1,5 +1,7 @@
 #include "src/controller/login.h"
 #include "src/controller/dialogcadastro.h"
+#include "src/utils/matriculagenerator.h"
+#include <QDebug>
 #include <QApplication>
 
 int main(int argc, char *argv[])

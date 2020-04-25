@@ -25,6 +25,7 @@ private:
     //Atributos
     Ui::Login_Screen *ui;
     BancoDeDados* banco_de_dados;
+    DialogCadastro* cadastrar_dialog;
     //Metodos
     void closeEvent(QCloseEvent *event);
 };

@@ -13,7 +13,7 @@ DialogCadastro::DialogCadastro(QWidget *parent,QWidget *prev_window,BancoDeDados
     ui->setupUi(this);
     this->prev_window = prev_window;
     this->matricula_generator = new MatriculaGenerator();
-    this->banco_de_dados = new BancoDeDados();
+    this->banco_de_dados = banco_de_dados;
     //Setando cor do texto dos labels
     this->ui->label_nome->setText(R"**(<span style="color:#20ab7d;">Nome</span><span style="color:red;">*</span>)**");
     this->ui->label_cpf->setText(R"**(<span style="color:#20ab7d;">CPF</span><span style="color:red;">*</span>)**");
@@ -106,7 +106,6 @@ void DialogCadastro::validaTodosOsCampos(){
     for (auto radio_button: this->ui->groupBox_genero->findChildren<QRadioButton*>()){
         if(radio_button->isChecked()){
             campoGeneroValido = true;
-            qDebug() << "1";
             break;
         }
     }
@@ -119,7 +118,6 @@ void DialogCadastro::validaTodosOsCampos(){
     bool campoTipoValido = false;
     for (auto radio_button: this->ui->groupBox_Tipo->findChildren<QRadioButton*>()){
         if(radio_button->isChecked()){
-            qDebug() << "2";
             campoTipoValido = true;
             break;
         }
@@ -140,7 +138,7 @@ void DialogCadastro::validaTodosOsCampos(){
                                                   font-size: 16px;\
                                                   margin: 4px 2px;\
                                                   border-radius: 5px;");
-        this->ui->label_informacao->setText("");
+        this->ui->label_informacao->clear();
 
     }
     else{
@@ -179,6 +177,19 @@ void DialogCadastro::on_text_cep_textChanged(const QString &arg1)
     }
 }
 
+void DialogCadastro::limparCampos(){
+    for(QLineEdit* text :this->ui->widget->findChildren<QLineEdit*>()){
+        text->clear();
+    }
+    for(QRadioButton* radio_button :this->ui->widget->findChildren<QRadioButton*>()){
+        radio_button->setAutoExclusive(false);
+        radio_button->setChecked(false);
+        radio_button->setAutoExclusive(true);
+    }
+    this->ui->label_tipo->setText(R"**(<span style="color:#20ab7d;">Tipo</span><span style="color:red;">*</span>)**");
+    this->ui->label_genero->setText(R"**(<span style="color:#20ab7d;">Genero</span><span style="color:red;">*</span>)**");
+}
+
 void DialogCadastro::on_text_name_textChanged(const QString &arg1)
 {
     this->validaTodosOsCampos();
@@ -201,6 +212,36 @@ void DialogCadastro::on_phone_text_textChanged(const QString &arg1)
 
 void DialogCadastro::on_cadastrar_Button_clicked()
 {
+    QChar tipo_novo_ususario = this->ui->radioButton_Aluno->isChecked() ? 'A' : 'P';
+    QString nome_novo_usuario = this->ui->text_name->text();
+    QString cpf_novo_usuario = this->ui->text_cpf->text();
+    QString email_novo_usuario = this->ui->text_email->text();
+    QString telefone_novo_usuario = this->ui->phone_text->text();
+    QString cep_novo_usuario = this->ui->text_cep->text();
+    QChar genero_novo_usuario = this->ui->radioButton_Mulher->isChecked() ? 'F' : 'M';
+    Endereco* endereco_novo_usuario = new Endereco(this->ui->text_Cidade->text(),
+                                                    this->ui->text_Cidade->text(),
+                                                    this->ui->text_Bairro->text(),
+                                                    this->ui->text_Logradouro->text());
+    try {
+        this->matricula_generator->GenerateMatricula(cpf_novo_usuario,tipo_novo_ususario);
+        if(this->banco_de_dados->procurar(cpf_novo_usuario) == nullptr){
+            Pessoa* nova_Pessoa = new Pessoa(nome_novo_usuario,
+                                             cpf_novo_usuario,
+                                             telefone_novo_usuario,
+                                             email_novo_usuario,
+                                             endereco_novo_usuario,
+                                             this->matricula_generator->getMatricula(),
+                                             genero_novo_usuario);
+            this->banco_de_dados->armazenar(nova_Pessoa->getCpf(),nova_Pessoa);
+            QMessageBox::information(this,"","Usuario cadastrado com sucesso!");
+            this->finished(0);
+        }else{
+            QMessageBox::warning(this,"Cpf Existente!","Ja existe usuario cadastrado com o cpf informado!");
+        }
+    } catch (CpfInvalidoException& ex) {
+        QMessageBox::warning(this,"Cpf Invalido!","O cpf informado nao é um cpf válido!");
+    }
 
 }
 

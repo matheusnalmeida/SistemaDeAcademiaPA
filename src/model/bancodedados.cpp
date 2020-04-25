@@ -6,6 +6,10 @@ BancoDeDados::BancoDeDados()
 }
 
 BancoDeDados::~BancoDeDados(){
+    std::map<QString, Pessoa*>::iterator itr;
+    for (itr = this->banco->begin(); itr != this->banco->end(); ++itr) {
+            delete itr->second;
+    }
     delete  this->banco;
 }
 
@@ -20,22 +24,20 @@ bool BancoDeDados::contem(QString cpf){
     if (it == this->banco->end()){
         return false;
     }else{
-
         return true;
     }
 }
 
-Pessoa BancoDeDados::procurar(QString cpf){
+Pessoa* BancoDeDados::procurar(QString cpf){
      std::map<QString, Pessoa*>::iterator it;
      it = this->banco->find(cpf);
      if (it == this->banco->end()){
-         return Pessoa();
+         return nullptr;
      }else{
          Pessoa *pessoa = it->second;
-         return *pessoa;
+         return pessoa;
      }
 }
-
 
 void BancoDeDados::removerChave(QString cpf){
      if(this->contem(cpf) == true){
