@@ -1,7 +1,6 @@
 #include "matriculagenerator.h"
 #include <ctime>
 #include <QDebug>
-
 MatriculaGenerator::MatriculaGenerator(){}
 
 void MatriculaGenerator::GenerateMatricula(QString cpf,QChar tipo){
@@ -10,7 +9,7 @@ void MatriculaGenerator::GenerateMatricula(QString cpf,QChar tipo){
     std::tm now = {};
     ::localtime_s(&now,&t);
     int ano = now.tm_year + 1900;
-    this->matricula = QString(ano) + QString(incremental++) + tipo;
+    this->matricula = QString::number(ano) + QString::number(incremental++) + tipo;
 }
 
 QString MatriculaGenerator::getMatricula(){

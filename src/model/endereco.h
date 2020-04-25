@@ -8,17 +8,18 @@ class Endereco
 public:
     Endereco(QString uf,QString cidade,QString bairro,QString logradouro);
     ~Endereco();
+    //Getters
+    QString getUf();
+    QString getCidade();
+    QString getBairro();
+    QString getLogradouro();
 private:
     //Atributos
     QString uf;
     QString cidade;
     QString bairro;
     QString logradouro;
-    //Getters
-    QString getUf();
-    QString getCidade();
-    QString getBairro();
-    QString getLogradouro();
+
 };
 
 #endif // ENDERECO_H

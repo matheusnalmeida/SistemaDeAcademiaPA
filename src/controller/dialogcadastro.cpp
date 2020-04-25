@@ -154,6 +154,7 @@ void DialogCadastro::validaTodosOsCampos(){
                                                   border-radius: 5px;");
         this->ui->label_informacao->setText(R"**(<span style="color:#ff0004;">
                                                   * Existem campos com informacoes a serem preenchidas</span>)**");
+
     }
 }
 
@@ -212,14 +213,14 @@ void DialogCadastro::on_phone_text_textChanged(const QString &arg1)
 
 void DialogCadastro::on_cadastrar_Button_clicked()
 {
-    QChar tipo_novo_ususario = this->ui->radioButton_Aluno->isChecked() ? 'A' : 'P';
+    QChar tipo_novo_ususario = this->ui->radioButton_Aluno->isChecked() ? 'a' : 'p';
     QString nome_novo_usuario = this->ui->text_name->text();
     QString cpf_novo_usuario = this->ui->text_cpf->text();
     QString email_novo_usuario = this->ui->text_email->text();
     QString telefone_novo_usuario = this->ui->phone_text->text();
     QString cep_novo_usuario = this->ui->text_cep->text();
-    QChar genero_novo_usuario = this->ui->radioButton_Mulher->isChecked() ? 'F' : 'M';
-    Endereco* endereco_novo_usuario = new Endereco(this->ui->text_Cidade->text(),
+    QChar genero_novo_usuario = this->ui->radioButton_Mulher->isChecked() ? 'f' : 'm';
+    Endereco* endereco_novo_usuario = new Endereco(this->ui->text_UF->text(),
                                                     this->ui->text_Cidade->text(),
                                                     this->ui->text_Bairro->text(),
                                                     this->ui->text_Logradouro->text());
@@ -234,7 +235,7 @@ void DialogCadastro::on_cadastrar_Button_clicked()
                                              this->matricula_generator->getMatricula(),
                                              genero_novo_usuario);
             this->banco_de_dados->armazenar(nova_Pessoa->getCpf(),nova_Pessoa);
-            QMessageBox::information(this,"","Usuario cadastrado com sucesso!");
+            QMessageBox::information(this,"","Usuario cadastrado com sucesso!\nSua matricula é " + this->matricula_generator->getMatricula());
             this->finished(0);
         }else{
             QMessageBox::warning(this,"Cpf Existente!","Ja existe usuario cadastrado com o cpf informado!");

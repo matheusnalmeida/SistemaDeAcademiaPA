@@ -19,9 +19,9 @@ QString Endereco::getCidade(){
 }
 
 QString Endereco::getBairro(){
-    return this->uf;
+    return this->bairro;
 }
 
 QString Endereco::getLogradouro(){
-    return this->uf;
+    return this->logradouro;
 }

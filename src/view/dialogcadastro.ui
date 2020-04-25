@@ -2438,6 +2438,9 @@ border-radius: 5px;</string>
             <property name="enabled">
              <bool>false</bool>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="styleSheet">
              <string notr="true">background-color: #cccccc;
 border: none;
