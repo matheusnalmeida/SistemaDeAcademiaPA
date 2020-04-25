@@ -782,7 +782,7 @@
                    <enum>QLineEdit::Password</enum>
                   </property>
                   <property name="placeholderText">
-                   <string>Senha</string>
+                   <string>Matricula</string>
                   </property>
                  </widget>
                 </item>

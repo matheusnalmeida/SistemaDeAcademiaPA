@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "dialogcadastro.h"
+#include "src/model/bancodedados.h"
 
 namespace Ui {
 class Login_Screen;
@@ -23,7 +24,7 @@ private slots:
 private:
     //Atributos
     Ui::Login_Screen *ui;
-    DialogCadastro* tela_de_cadastro;
+    BancoDeDados* banco_de_dados;
     //Metodos
     void closeEvent(QCloseEvent *event);
 };
