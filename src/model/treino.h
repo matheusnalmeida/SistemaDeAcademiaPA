@@ -1,18 +1,16 @@
 #ifndef TREINO_H
 #define TREINO_H
 #include <string>
-
+#include <map>
+#include <QRegularExpression>
 class Treino
 {
 public:
     Treino();
-    Treino(int quantidadeR, std::string nomeTreino);
-    int getRepeticao();
-
-    std::string getNomeTreino();
+    std::map<QString,int>* getMap();
+    void adicionarExercicio(QString nome_exercicio, int repeticao);
 private:
-    int qtdRepeticao;
-    std::string nomeTreino;
+    std::map<QString, int> *exercicios;
 };
 
 #endif // TREINO_H

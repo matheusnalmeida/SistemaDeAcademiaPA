@@ -2,16 +2,14 @@
 
 Treino::Treino()
 {
-
-}
-Treino::Treino(int quantidadeR, std::string nomeTreino){
-     this->qtdRepeticao = quantidadeR;
-     this->nomeTreino = nomeTreino;
-}
-int Treino::getRepeticao(){
-    return this->qtdRepeticao;
+   this->exercicios = new std::map<QString, int>();
 }
 
-std::string Treino::getNomeTreino(){
-    return this->nomeTreino;
+std::map<QString, int>* Treino::getMap(){
+   return this->exercicios;
+}
+
+
+void Treino::adicionarExercicio(QString nome_exercicio, int repeticao){
+   this->exercicios->insert(std::pair<QString, int>(nome_exercicio,repeticao));
 }
