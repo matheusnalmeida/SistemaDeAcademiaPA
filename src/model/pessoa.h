@@ -19,6 +19,7 @@ public:
     QString getMatricula();
     QChar getGenero();
 
+
 private:
     //Atributos
     QString nome;

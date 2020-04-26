@@ -6,7 +6,7 @@
 #include <QDebug>
 #include <QCloseEvent>
 #include <QMainWindow>
-
+#include "teladopersonal.h"
 Login_Screen::Login_Screen(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Login_Screen)
@@ -42,13 +42,17 @@ void Login_Screen::on_login_button_clicked()
     QString matricula_login = this->ui->matricula_field->text();
     Pessoa* pessoa_login = this->banco_de_dados->procurar(cpf_login);
     bool matriculaCorreta = matricula_login == pessoa_login->getMatricula();
+    //Se a pessoa nao for vazia e a matricula estiver correta
     if(pessoa_login != nullptr && matriculaCorreta){
+            //Aqui esta pegando a matricula e checando se a ultima letra é igual a A
             if(pessoa_login->getMatricula().at(pessoa_login->getMatricula().length()-1) == 'a'){
                 teladeusuario *tela = new teladeusuario(nullptr,this,pessoa_login);
                 tela->show();
                 this->hide();
             }else{
-
+                Teladopersonal *telaP = new Teladopersonal(nullptr, this, pessoa_login);
+                telaP->show();
+                this->hide();
             }
     }else{
         QMessageBox::warning(this,"","Nenhum usuário cadastrado com as credenciais informadas!");

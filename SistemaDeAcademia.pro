@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    src/model/personal.cpp \
     src/controller/dialogmostrartreino.cpp \
     src/model/bancodedados.cpp \
     src/controller/dialogcadastro.cpp \
@@ -26,8 +27,12 @@ SOURCES += \
     src/utils/matriculagenerator.cpp \
     src/view/main.cpp \
     src/controller/teladeusuario.cpp \
+    src/model/treino.cpp \
+    src/model/usuario.cpp \
+    src/controller/teladopersonal.cpp
 
 HEADERS += \
+    src/model/personal.h \
     src/controller/dialogmostrartreino.h \
     src/model/bancodedados.h \
     src/controller/dialogcadastro.h \
@@ -35,14 +40,18 @@ HEADERS += \
     src/model/endereco.h \
     src/controller/login.h \
     src/model/pessoa.h \
-    src/controller/teladeusuario.h \ \
-    src/utils/matriculagenerator.h
+    src/controller/teladeusuario.h \
+    src/utils/matriculagenerator.h \
+    src/model/treino.h \
+    src/model/usuario.h \
+    src/controller/teladopersonal.h
 
 FORMS += \
     src/view/dialogmostrartreino.ui \
     src/view/dialogcadastro.ui \
     src/view/login.ui \
     src/view/teladeusuario.ui \
+    src/view/teladopersonal.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
