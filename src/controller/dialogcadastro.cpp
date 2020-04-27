@@ -226,7 +226,7 @@ void DialogCadastro::on_cadastrar_Button_clicked()
                                                     this->ui->text_Logradouro->text());
     try {
         this->matricula_generator->GenerateMatricula(cpf_novo_usuario,tipo_novo_ususario);
-        if(this->banco_de_dados->procurar(cpf_novo_usuario) == nullptr){
+        if(this->banco_de_dados->procurarCPF(cpf_novo_usuario) == nullptr){
             Pessoa* nova_Pessoa = new Pessoa(nome_novo_usuario,
                                              cpf_novo_usuario,
                                              telefone_novo_usuario,
@@ -234,7 +234,7 @@ void DialogCadastro::on_cadastrar_Button_clicked()
                                              endereco_novo_usuario,
                                              this->matricula_generator->getMatricula(),
                                              genero_novo_usuario);
-            this->banco_de_dados->armazenar(nova_Pessoa->getCpf(),nova_Pessoa);
+            this->banco_de_dados->armazenar(nova_Pessoa);
             QMessageBox::information(this,"","Usuario cadastrado com sucesso!\nSua matricula é " + this->matricula_generator->getMatricula());
             this->finished(0);
         }else{

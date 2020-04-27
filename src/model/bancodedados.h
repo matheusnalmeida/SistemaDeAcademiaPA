@@ -9,13 +9,15 @@ class BancoDeDados
 public:
     BancoDeDados();
     ~BancoDeDados();
-    void armazenar(QString cpf, Pessoa *pessoa);
-    void removerChave(QString cpf);
-    Pessoa* procurar(QString cpf);
-
+    void armazenar(Pessoa *pessoa);
+    void removerChaveCPF(QString cpf);
+    int tamanhoMapMatricula();
+    Pessoa* procurarCPF(QString cpf);
+    std::map<QString , Pessoa*> *getBancoMatricula();
 private:
-    std::map<QString , Pessoa*> *banco;
-    bool contem(QString cpf);
+    std::map<QString , Pessoa*> *bancoCPF;
+    std::map<QString , Pessoa*> *bancoMatricula;
+    bool contemCPF(QString cpf);
 };
 
 #endif // BANCODEDADOS_H

@@ -40,7 +40,7 @@ void Login_Screen::on_login_button_clicked()
 {
     QString cpf_login = this->ui->cpf_field->text();
     QString matricula_login = this->ui->matricula_field->text();
-    Pessoa* pessoa_login = this->banco_de_dados->procurar(cpf_login);
+    Pessoa* pessoa_login = this->banco_de_dados->procurarCPF(cpf_login);
     bool matriculaCorreta = matricula_login == pessoa_login->getMatricula();
     //Se a pessoa nao for vazia e a matricula estiver correta
     if(pessoa_login != nullptr && matriculaCorreta){
@@ -50,7 +50,7 @@ void Login_Screen::on_login_button_clicked()
                 tela->show();
                 this->hide();
             }else{
-                Teladopersonal *telaP = new Teladopersonal(nullptr, this, pessoa_login);
+                Teladopersonal *telaP = new Teladopersonal(nullptr, this, pessoa_login,banco_de_dados);
                 telaP->show();
                 this->hide();
             }

@@ -2,36 +2,46 @@
 
 BancoDeDados::BancoDeDados()
 {
-     this->banco = new std::map<QString, Pessoa*>();
+     this->bancoCPF = new std::map<QString, Pessoa*>();
+     this->bancoMatricula = new std::map<QString, Pessoa*>();
 }
 
 BancoDeDados::~BancoDeDados(){
     std::map<QString, Pessoa*>::iterator itr;
-    for (itr = this->banco->begin(); itr != this->banco->end(); ++itr) {
+    for (itr = this->bancoCPF->begin(); itr != this->bancoCPF->end(); ++itr) {
             delete itr->second;
     }
-    delete  this->banco;
+    for (itr = this->bancoMatricula->begin(); itr != this->bancoMatricula->end(); ++itr) {
+            delete itr->second;
+    }
+    delete  this->bancoCPF;
+    delete this->bancoMatricula;
 }
 
-void BancoDeDados::armazenar(QString cpf, Pessoa *pessoa){
-     this->banco->insert(std::pair<QString, Pessoa*>(cpf,pessoa));
+int BancoDeDados::tamanhoMapMatricula(){
+    return this->bancoMatricula->size();
+}
+
+void BancoDeDados::armazenar(Pessoa *pessoa){
+     this->bancoCPF->insert(std::pair<QString, Pessoa*>(pessoa->getCpf(),pessoa));
+     this->bancoMatricula->insert(std::pair<QString, Pessoa*>(pessoa->getMatricula(),pessoa));
 }
 
 
-bool BancoDeDados::contem(QString cpf){
+bool BancoDeDados::contemCPF(QString cpf){
     std::map<QString, Pessoa*>::iterator it;
-    it = this->banco->find(cpf);
-    if (it == this->banco->end()){
+    it = this->bancoCPF->find(cpf);
+    if (it == this->bancoCPF->end()){
         return false;
     }else{
         return true;
     }
 }
 
-Pessoa* BancoDeDados::procurar(QString cpf){
+Pessoa* BancoDeDados::procurarCPF(QString cpf){
      std::map<QString, Pessoa*>::iterator it;
-     it = this->banco->find(cpf);
-     if (it == this->banco->end()){
+     it = this->bancoCPF->find(cpf);
+     if (it == this->bancoCPF->end()){
          return nullptr;
      }else{
          Pessoa *pessoa = it->second;
@@ -39,10 +49,14 @@ Pessoa* BancoDeDados::procurar(QString cpf){
      }
 }
 
-void BancoDeDados::removerChave(QString cpf){
-     if(this->contem(cpf) == true){
-          this->banco->erase(cpf);
+void BancoDeDados::removerChaveCPF(QString cpf){
+     if(this->contemCPF(cpf) == true){
+          this->bancoCPF->erase(cpf);
      }
 }
 
+
+std::map<QString , Pessoa*>* BancoDeDados:: getBancoMatricula(){
+          return this->bancoMatricula;
+}
 

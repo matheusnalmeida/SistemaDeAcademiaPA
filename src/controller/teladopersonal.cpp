@@ -2,7 +2,8 @@
 #include "ui_teladopersonal.h"
 #include "QMessageBox"
 #include "QCloseEvent"
-Teladopersonal::Teladopersonal(QWidget *parent, QWidget *prev_window,Pessoa* usuario) :
+#include "dialogmostrarusuarios.h"
+Teladopersonal::Teladopersonal(QWidget *parent, QWidget *prev_window,Pessoa* usuario, BancoDeDados* banco) :
     QWidget(parent),
     ui(new Ui::Teladopersonal)
 {
@@ -13,6 +14,7 @@ Teladopersonal::Teladopersonal(QWidget *parent, QWidget *prev_window,Pessoa* usu
     //Colcando icones na tela
     QPixmap pix_icon(":/imagem/src/resources/imagem_icon.jpg");
     this->ui->icon_default->setPixmap(pix_icon);
+    this->banco = banco;
 }
 
 Teladopersonal::~Teladopersonal()
@@ -45,4 +47,15 @@ void Teladopersonal::preencherDados(){
     this->ui->texto_email->setText(this->usuario->getEmail());
     this->ui->texto_logradouro->setText(this->usuario->getEndereco()->getLogradouro());
     this->ui->texto_uf->setText(this->usuario->getEndereco()->getUf());
+}
+
+
+
+void Teladopersonal::on_cadastro_botao_clicked()
+{
+
+        DialogMostrarUsuarios* DMU = new DialogMostrarUsuarios(nullptr,this,this->banco);
+        DMU->exec();
+
+
 }

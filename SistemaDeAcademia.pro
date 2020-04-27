@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    src/controller/dialogmostrarusuarios.cpp \
     src/model/personal.cpp \
     src/controller/dialogmostrartreino.cpp \
     src/model/bancodedados.cpp \
@@ -32,6 +33,7 @@ SOURCES += \
     src/controller/teladopersonal.cpp
 
 HEADERS += \
+    src/controller/dialogmostrarusuarios.h \
     src/model/personal.h \
     src/controller/dialogmostrartreino.h \
     src/model/bancodedados.h \
@@ -47,6 +49,7 @@ HEADERS += \
     src/controller/teladopersonal.h
 
 FORMS += \
+    src/view/dialogmostrarusuarios.ui \
     src/view/dialogmostrartreino.ui \
     src/view/dialogcadastro.ui \
     src/view/login.ui \
