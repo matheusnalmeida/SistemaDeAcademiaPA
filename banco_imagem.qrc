@@ -4,5 +4,8 @@
         <file>src/resources/password_icon.png</file>
         <file>src/resources/username_icon.png</file>
         <file>src/resources/imagem_icon.jpg</file>
+        <file>src/resources/add_icon.png</file>
+        <file>src/resources/delete_icon.png</file>
+        <file>src/resources/edit_icon.png</file>
     </qresource>
 </RCC>

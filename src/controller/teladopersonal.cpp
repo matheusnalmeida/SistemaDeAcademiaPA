@@ -24,8 +24,8 @@ Teladopersonal::~Teladopersonal()
 
 void Teladopersonal::closeEvent(QCloseEvent *event){
     if (event->spontaneous()) {
-        QMessageBox::StandardButton reply = QMessageBox::question(this,"Logout",
-                                                                  "Deseja finalizar a sessão?",
+        QMessageBox::StandardButton reply = QMessageBox::question(this,"",
+                                                                  "Deseja finalizar o cadastro de treinos?",
                                                                   QMessageBox::Yes | QMessageBox::No);
         if(reply == QMessageBox::Yes){
             this->prev_window->show();

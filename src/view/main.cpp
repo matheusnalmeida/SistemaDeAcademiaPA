@@ -3,6 +3,9 @@
 #include "src/utils/matriculagenerator.h"
 #include <QDebug>
 #include <QApplication>
+#include <map>
+#include <string>
+#include <iostream>
 
 int main(int argc, char *argv[])
 {

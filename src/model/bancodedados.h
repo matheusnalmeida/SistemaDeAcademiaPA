@@ -10,14 +10,29 @@ public:
     BancoDeDados();
     ~BancoDeDados();
     void armazenar(Pessoa *pessoa);
+    //Metodos usando cpf como chave
     void removerChaveCPF(QString cpf);
-    int tamanhoMapMatricula();
     Pessoa* procurarCPF(QString cpf);
-    std::map<QString , Pessoa*> *getBancoMatricula();
+    //Metodos usando matricula como chave
+    void removerChaveMatricula(QString matricula);
+    Pessoa* procurarMatricula(QString matricula);
+    //Getters
+    std::map<QString,Pessoa*>* getAlunosMatricula();
+    std::map<QString,Pessoa*>* getTreinadoresMatricula();
+    std::map<QString,Pessoa*>* getAlunosCPF();
+    std::map<QString,Pessoa*>* getTreinadoresCPF();
+
 private:
     std::map<QString , Pessoa*> *bancoCPF;
     std::map<QString , Pessoa*> *bancoMatricula;
+    std::map<QString,Pessoa*>* alunosCadastradosMatricula;
+    std::map<QString,Pessoa*>* professoresCadastradosMatricula;
+    std::map<QString,Pessoa*>* alunosCadastradosCPF;
+    std::map<QString,Pessoa*>* professoresCadastradosCPF;
     bool contemCPF(QString cpf);
+    bool contemMatricula(QString cpf);
+    void removerUsuario(Pessoa* pessoa);
+
 };
 
 #endif // BANCODEDADOS_H
