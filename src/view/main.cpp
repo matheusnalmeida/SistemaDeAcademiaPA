@@ -6,6 +6,7 @@
 #include <map>
 #include <string>
 #include <iostream>
+#include "src/controller/dialogmostrarusuarios.h"
 
 int main(int argc, char *argv[])
 {

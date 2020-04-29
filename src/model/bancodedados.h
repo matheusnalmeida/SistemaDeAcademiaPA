@@ -30,7 +30,7 @@ private:
     std::map<QString,Pessoa*>* alunosCadastradosCPF;
     std::map<QString,Pessoa*>* professoresCadastradosCPF;
     bool contemCPF(QString cpf);
-    bool contemMatricula(QString cpf);
+    bool contemMatricula(QString matricula);
     void removerUsuario(Pessoa* pessoa);
 
 };

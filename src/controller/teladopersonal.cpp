@@ -24,8 +24,8 @@ Teladopersonal::~Teladopersonal()
 
 void Teladopersonal::closeEvent(QCloseEvent *event){
     if (event->spontaneous()) {
-        QMessageBox::StandardButton reply = QMessageBox::question(this,"",
-                                                                  "Deseja finalizar o cadastro de treinos?",
+        QMessageBox::StandardButton reply = QMessageBox::question(this,"Logout",
+                                                                  "Deseja finalizar a sessão?",
                                                                   QMessageBox::Yes | QMessageBox::No);
         if(reply == QMessageBox::Yes){
             this->prev_window->show();
@@ -49,13 +49,8 @@ void Teladopersonal::preencherDados(){
     this->ui->texto_uf->setText(this->usuario->getEndereco()->getUf());
 }
 
-
-
 void Teladopersonal::on_cadastro_botao_clicked()
 {
-
         DialogMostrarUsuarios* DMU = new DialogMostrarUsuarios(nullptr,this,this->banco);
         DMU->exec();
-
-
 }

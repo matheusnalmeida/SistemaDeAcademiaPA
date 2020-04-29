@@ -17,10 +17,6 @@ public:
     ~Teladopersonal();
 
 private slots:
-
-
-
-
     void on_cadastro_botao_clicked();
 
 private:

@@ -4,6 +4,7 @@
 #include "QListWidgetItem"
 #include "QMessageBox"
 #include "QCloseEvent"
+
 DialogMostrarUsuarios::DialogMostrarUsuarios(QWidget *parent, QWidget *prev_window, BancoDeDados *banco) :
     QDialog(parent),
     ui(new Ui::DialogMostrarUsuarios)
@@ -22,24 +23,23 @@ DialogMostrarUsuarios::DialogMostrarUsuarios(QWidget *parent, QWidget *prev_wind
     }
 }
 
-void DialogMostrarUsuarios::closeEvent(QCloseEvent *event){
-    if (event->spontaneous()) {
-        QMessageBox::StandardButton reply = QMessageBox::question(this,"Logout",
-                                                                  "Deseja finalizar a sessão?",
-                                                                  QMessageBox::Yes | QMessageBox::No);
-        if(reply == QMessageBox::Yes){
-            this->prev_window->show();
-            this->hide();
-        }else{
-            event->ignore();
-        }
-    } else {
-        QWidget::closeEvent(event);
-    }
+void DialogMostrarUsuarios::on_DialogMostrarUsuarios_finished(int result)
+{
+        this->prev_window->show();
+        this->close();
 }
 
 DialogMostrarUsuarios::~DialogMostrarUsuarios()
 {
-
     delete ui;
 }
+
+void DialogMostrarUsuarios::on_listaWidgte_itemClicked(QListWidgetItem *item)
+{
+    QString matricula_escolhida = item->text();
+    std::map<QString,Treino*>* treinos_atual = this->banco->procurarMatricula(matricula_escolhida)->getTreinos();
+    DialogCadastrarTreino* tela_de_treinos = new DialogCadastrarTreino(nullptr,this,treinos_atual);
+    tela_de_treinos->exec();
+}
+
+

@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     src/controller/dialogmostrarusuarios.cpp \
+    src/controller/dialogcadastrartreino.cpp \
     src/model/personal.cpp \
     src/controller/dialogmostrartreino.cpp \
     src/model/bancodedados.cpp \
@@ -34,6 +35,7 @@ SOURCES += \
 
 HEADERS += \
     src/controller/dialogmostrarusuarios.h \
+    src/controller/dialogcadastrartreino.h \
     src/model/personal.h \
     src/controller/dialogmostrartreino.h \
     src/model/bancodedados.h \
@@ -49,6 +51,7 @@ HEADERS += \
     src/controller/teladopersonal.h
 
 FORMS += \
+    src/view/dialogcadastrartreino.ui \
     src/view/dialogmostrarusuarios.ui \
     src/view/dialogmostrartreino.ui \
     src/view/dialogcadastro.ui \

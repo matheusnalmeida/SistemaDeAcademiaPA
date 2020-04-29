@@ -1,11 +1,12 @@
 #include "dialogmostrartreino.h"
 #include "ui_dialogmostrartreino.h"
 
-dialogmostrartreino::dialogmostrartreino(QWidget *parent) :
+dialogmostrartreino::dialogmostrartreino(QWidget *parent, QWidget *prev_window) :
     QDialog(parent),
     ui(new Ui::dialogmostrartreino)
 {
     ui->setupUi(this);
+    this->prev_window = prev_window;
     //quantas colunas tem que ter
     ui->treinos->setColumnCount(2);
     //tamanho das colunas
@@ -27,4 +28,10 @@ dialogmostrartreino::dialogmostrartreino(QWidget *parent) :
 dialogmostrartreino::~dialogmostrartreino()
 {
     delete ui;
+}
+
+void dialogmostrartreino::on_dialogmostrartreino_finished(int result)
+{
+    this->close();
+    this->prev_window->show();
 }
