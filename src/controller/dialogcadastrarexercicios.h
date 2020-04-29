@@ -2,6 +2,7 @@
 #define DIALOGCADASTRAREXERCICIOS_H
 #include <map>
 #include "src/model/treino.h"
+#include "dialogcadastrartreino.h"
 #include <QDialog>
 
 namespace Ui {
@@ -13,7 +14,7 @@ class Dialogcadastrarexercicios : public QDialog
     Q_OBJECT
 
 public:
-    explicit Dialogcadastrarexercicios(QWidget *parent = nullptr, QWidget *prev = nullptr,std::map<QString, Treino*>* bancoDeTreinos = nullptr );
+    explicit Dialogcadastrarexercicios(QWidget *parent = nullptr, DialogCadastrarTreino *prev = nullptr,std::map<QString, Treino*>* bancoDeTreinos = nullptr );
     ~Dialogcadastrarexercicios();
 
 private slots:
@@ -22,7 +23,7 @@ private slots:
 private:
     Ui::Dialogcadastrarexercicios *ui;
     std::map<QString, Treino*>* bancoDeTreinos;
-    QWidget *prev;
+    DialogCadastrarTreino *prev;
 };
 
 #endif // DIALOGCADASTRAREXERCICIOS_H

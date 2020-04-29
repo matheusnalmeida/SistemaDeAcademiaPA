@@ -2,7 +2,7 @@
 #include "ui_dialogcadastrarexercicios.h"
 #include "QMessageBox"
 #include "QDebug"
-Dialogcadastrarexercicios::Dialogcadastrarexercicios(QWidget *parent , QWidget *prev , std::map<QString, Treino*>* bancoDeTreinos) :
+Dialogcadastrarexercicios::Dialogcadastrarexercicios(QWidget *parent , DialogCadastrarTreino *prev , std::map<QString, Treino*>* bancoDeTreinos) :
     QDialog(parent),
     ui(new Ui::Dialogcadastrarexercicios)
 {
@@ -53,7 +53,6 @@ void Dialogcadastrarexercicios::on_pushButton_clicked()
     QString numero_serie_6 = this->ui->texto_serie_6->text();
     Treino *treino = new Treino(nome_treino);
 
-
     if(repeticao_1.size() > 0 && numero_serie_1.size() > 0 && nome_exercicio_1.size() > 0){
             QString rep_1 = numero_serie_1 + "x" + repeticao_1;
             treino->adicionarExercicio(nome_exercicio_1, rep_1);
@@ -79,26 +78,9 @@ void Dialogcadastrarexercicios::on_pushButton_clicked()
             treino->adicionarExercicio(nome_exercicio_6, rep_6);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     this->bancoDeTreinos->insert(std::pair<QString, Treino*>(treino->getNome(),treino));
 
     QMessageBox::information(this,"","Treino cadastrado com sucesso");
-
+    this->prev->carregarTreinos();
     this->close();
-
-
 }

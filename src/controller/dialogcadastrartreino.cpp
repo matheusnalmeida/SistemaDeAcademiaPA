@@ -21,14 +21,10 @@ DialogCadastrarTreino::DialogCadastrarTreino(QWidget *parent,QWidget *prev_windo
     QPixmap pixmap_edit(":/imagem/src/resources/edit_icon.png");
     QIcon ButtonIconEdit(pixmap_edit);
     this->ui->edit_button->setIcon(ButtonIconEdit);
-
-    QPixmap pixmap_att(":/imagem/src/resources/atualizar_icon");
-    QIcon ButtonIconAt(pixmap_att);
-    this->ui->pushButton->setIcon(ButtonIconAt);
-
 }
 
 void DialogCadastrarTreino::carregarTreinos(){
+    this->ui->listWidget->clear();
     std::map<QString, Treino*>::iterator itr;
     for (itr = this->bancoDeTreinos->begin(); itr != this->bancoDeTreinos->end(); ++itr) {
         QListWidgetItem * item = new QListWidgetItem(itr->first);

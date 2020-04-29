@@ -19,6 +19,7 @@ public:
                                    QWidget* prev_window = nullptr,
                                    std::map<QString,Treino*>* bancoDeTreinos = nullptr);
     ~DialogCadastrarTreino();
+    void carregarTreinos();
 
 private slots:
     void on_DialogCadastrarTreino_finished(int result);
@@ -37,7 +38,6 @@ private:
     Ui::DialogCadastrarTreino *ui;
     std::map<QString,Treino*>* bancoDeTreinos;
     QWidget* prev_window;
-    void carregarTreinos();
 };
 
 #endif // DIALOGCADASTRARTREINO_H
