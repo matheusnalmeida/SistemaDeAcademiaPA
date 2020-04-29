@@ -2,7 +2,7 @@
 
 Usuario::Usuario()
 {
-   this->treinos = new std::vector<Treino>();
+   this->treinos = new std::map<QString,Treino*>();
 }
 Usuario::~Usuario(){
    delete this->treinos;
@@ -10,7 +10,16 @@ Usuario::~Usuario(){
 
 Usuario::Usuario(QString nome,QString cpf,QString telefone,QString email,Endereco* endereco,QString matricula,QChar genero) : Pessoa( nome, cpf, telefone, email, endereco, matricula, genero) {}
 
-void Usuario::adicionarTreino(Treino treino){
-    this->treinos->push_back(treino);
+//Cadastro e remoção
+void Usuario::cadastrarTreino(QString nomeDoTreino){
+    Treino* novoTreino = new Treino(nomeDoTreino);
+    this->treinos->insert(std::pair<QString, Treino*>(nomeDoTreino,novoTreino));
 }
 
+void Usuario::removerTreino(QString nomeDoTreino){
+    this->treinos->erase(nomeDoTreino);
+}
+
+std::map<QString,Treino*>* Usuario::getTreinos(){
+    return this->treinos;
+}

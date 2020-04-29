@@ -5,7 +5,8 @@
 #include <QRegularExpression>
 #include <QRegExpValidator>
 #include <QMessageBox>
-
+#include "src/model/usuario.h"
+#include "src/model/personal.h"
 DialogCadastro::DialogCadastro(QWidget *parent,QWidget *prev_window,BancoDeDados* banco_de_dados) :
     QDialog(parent),
     ui(new Ui::DialogCadastro)
@@ -226,20 +227,39 @@ void DialogCadastro::on_cadastrar_Button_clicked()
                                                     this->ui->text_Logradouro->text());
     try {
         this->matricula_generator->GenerateMatricula(cpf_novo_usuario,tipo_novo_ususario);
+
+        if(this->matricula_generator->getMatricula().at(matricula_generator->getMatricula().length()-1) == 'a'){
+
         if(this->banco_de_dados->procurarCPF(cpf_novo_usuario) == nullptr){
-            Pessoa* nova_Pessoa = new Pessoa(nome_novo_usuario,
+            Usuario* usuario = new Usuario(nome_novo_usuario,
                                              cpf_novo_usuario,
                                              telefone_novo_usuario,
                                              email_novo_usuario,
                                              endereco_novo_usuario,
                                              this->matricula_generator->getMatricula(),
                                              genero_novo_usuario);
-            this->banco_de_dados->armazenar(nova_Pessoa);
+            this->banco_de_dados->armazenar(usuario);
             QMessageBox::information(this,"","Usuario cadastrado com sucesso!\nSua matricula é " + this->matricula_generator->getMatricula());
             this->finished(0);
         }else{
             QMessageBox::warning(this,"Cpf Existente!","Ja existe usuario cadastrado com o cpf informado!");
         }
+        }else{
+            if(this->banco_de_dados->procurarCPF(cpf_novo_usuario) == nullptr){
+            Personal* personal = new Personal(nome_novo_usuario,
+                                             cpf_novo_usuario,
+                                             telefone_novo_usuario,
+                                             email_novo_usuario,
+                                             endereco_novo_usuario,
+                                             this->matricula_generator->getMatricula(),
+                                             genero_novo_usuario);
+            this->banco_de_dados->armazenar(personal);
+            QMessageBox::information(this,"","Usuario cadastrado com sucesso!\nSua matricula é " + this->matricula_generator->getMatricula());
+            this->finished(0);
+        }else{
+                QMessageBox::warning(this,"Cpf Existente!","Ja existe usuario cadastrado com o cpf informado!");
+            }
+            }
     } catch (CpfInvalidoException& ex) {
         QMessageBox::warning(this,"Cpf Invalido!","O cpf informado nao é um cpf válido!");
     }

@@ -9,6 +9,7 @@ public:
     Treino(QString nome);
     ~Treino();
     std::map<QString,int>* getMap();
+    QString getNome();
     void adicionarExercicio(QString nome_exercicio, int repeticao);
 private:
     QString nomeDoTreino;

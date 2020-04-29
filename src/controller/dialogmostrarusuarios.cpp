@@ -4,7 +4,7 @@
 #include "QListWidgetItem"
 #include "QMessageBox"
 #include "QCloseEvent"
-
+#include "src/model/usuario.h"
 DialogMostrarUsuarios::DialogMostrarUsuarios(QWidget *parent, QWidget *prev_window, BancoDeDados *banco) :
     QDialog(parent),
     ui(new Ui::DialogMostrarUsuarios)
@@ -37,7 +37,8 @@ DialogMostrarUsuarios::~DialogMostrarUsuarios()
 void DialogMostrarUsuarios::on_listaWidgte_itemClicked(QListWidgetItem *item)
 {
     QString matricula_escolhida = item->text();
-    std::map<QString,Treino*>* treinos_atual = this->banco->procurarMatricula(matricula_escolhida)->getTreinos();
+    Usuario *usuario = (Usuario*) this->banco->procurarMatricula(matricula_escolhida);
+    std::map<QString,Treino*>* treinos_atual = usuario->getTreinos();
     DialogCadastrarTreino* tela_de_treinos = new DialogCadastrarTreino(nullptr,this,treinos_atual);
     tela_de_treinos->exec();
 }

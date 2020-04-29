@@ -25,7 +25,7 @@ public:
 private:
     std::map<QString , Pessoa*> *bancoCPF;
     std::map<QString , Pessoa*> *bancoMatricula;
-    std::map<QString,Pessoa*>* alunosCadastradosMatricula;
+    std::map<QString,  Pessoa*>* alunosCadastradosMatricula;
     std::map<QString,Pessoa*>* professoresCadastradosMatricula;
     std::map<QString,Pessoa*>* alunosCadastradosCPF;
     std::map<QString,Pessoa*>* professoresCadastradosCPF;

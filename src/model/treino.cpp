@@ -14,6 +14,9 @@ std::map<QString, int>* Treino::getMap(){
     return this->exercicios;
 }
 
+QString Treino::getNome(){
+return this->nomeDoTreino;
+}
 
 void Treino::adicionarExercicio(QString nome_exercicio, int repeticao){
     this->exercicios->insert(std::pair<QString, int>(nome_exercicio,repeticao));

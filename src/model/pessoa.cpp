@@ -11,27 +11,15 @@ Pessoa::Pessoa(QString nome,QString cpf,QString telefone,QString email,Endereco*
     this->endereco = endereco;
     this->matricula = matricula;
     this->genero = genero;
-    this->treinos = new std::map<QString,Treino*>();
+
 }
 
 Pessoa::~Pessoa(){
     delete this->endereco;
-    std::map<QString, Treino*>::iterator itr;
-    for (itr = this->treinos->begin(); itr != this->treinos->end(); ++itr) {
-        delete itr->second;
-    }
-    delete this->treinos;
+
 }
 
-//Cadastro e remoção
-void Pessoa::cadastrarTreino(QString nomeDoTreino){
-    Treino* novoTreino = new Treino(nomeDoTreino);
-    this->treinos->insert(std::pair<QString, Treino*>(nomeDoTreino,novoTreino));
-}
 
-void Pessoa::removerTreino(QString nomeDoTreino){
-    this->treinos->erase(nomeDoTreino);
-}
 
 //Getters
 QString Pessoa::getNome(){
@@ -62,6 +50,4 @@ QChar Pessoa::getGenero(){
     return this->genero;
 }
 
-std::map<QString,Treino*>* Pessoa::getTreinos(){
-    return this->treinos;
-}
+
