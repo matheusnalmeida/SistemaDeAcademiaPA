@@ -59,3 +59,10 @@ void teladeusuario::preencherDados(){
     }
 }
 
+
+void teladeusuario::on_listWidget_itemClicked(QListWidgetItem *item)
+{
+    std::map<QString,Treino*>::iterator it = this->usuario->getTreinos()->find(item->text());
+    dialogmostrartreino* tela_do_treino = new dialogmostrartreino(nullptr,this,it->second);
+    tela_do_treino->exec();
+}

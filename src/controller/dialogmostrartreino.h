@@ -14,8 +14,9 @@ class dialogmostrartreino : public QDialog
     Q_OBJECT
 
 public:
-    explicit dialogmostrartreino(QWidget *parent = nullptr,
-                                 QWidget *prev_window = nullptr);
+    explicit dialogmostrartreino(QWidget* parent = nullptr,
+                                 QWidget* prev_window = nullptr,
+                                 Treino* treino_atual = nullptr);
     ~dialogmostrartreino();
 
 private slots:
@@ -24,7 +25,8 @@ private slots:
 private:
     Ui::dialogmostrartreino *ui;
     QWidget *prev_window;
-
+    Treino* treino_atual;
+    void carregarTreinos();
 };
 
 #endif // DIALOGMOSTRARTREINO_H

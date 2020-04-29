@@ -4,6 +4,9 @@
 #include <QWidget>
 #include "src/model/pessoa.h"
 #include "src/model/usuario.h"
+#include <QListWidgetItem>
+#include "dialogmostrartreino.h"
+
 namespace Ui {
 class teladeusuario;
 }
@@ -15,6 +18,9 @@ class teladeusuario : public QWidget
 public:
     explicit teladeusuario(QWidget *parent = nullptr,QWidget *prev_window = nullptr,Pessoa* usuario = nullptr);
     ~teladeusuario();
+
+private slots:
+    void on_listWidget_itemClicked(QListWidgetItem *item);
 
 private:
     Ui::teladeusuario *ui;
