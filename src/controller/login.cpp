@@ -46,10 +46,14 @@ void Login_Screen::on_login_button_clicked()
     if(pessoa_login != nullptr && matriculaCorreta){
             //Aqui esta pegando a matricula e checando se a ultima letra é igual a A
             if(pessoa_login->getMatricula().at(pessoa_login->getMatricula().length()-1) == 'a'){
+                this->ui->cpf_field->setText("");
+                this->ui->matricula_field->setText("");
                 teladeusuario *tela = new teladeusuario(nullptr,this,pessoa_login);
                 tela->show();
                 this->hide();
             }else{
+                this->ui->cpf_field->setText("");
+                this->ui->matricula_field->setText("");
                 Teladopersonal *telaP = new Teladopersonal(nullptr, this, pessoa_login,banco_de_dados);
                 telaP->show();
                 this->hide();

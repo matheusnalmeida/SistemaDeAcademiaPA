@@ -62,7 +62,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QListView" name="listView"/>
+       <widget class="QListWidget" name="listWidget">
+        <property name="styleSheet">
+         <string notr="true">background-color: #fff</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>

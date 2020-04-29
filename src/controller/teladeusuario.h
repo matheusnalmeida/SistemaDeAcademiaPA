@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include "src/model/pessoa.h"
-
+#include "src/model/usuario.h"
 namespace Ui {
 class teladeusuario;
 }
@@ -19,7 +19,7 @@ public:
 private:
     Ui::teladeusuario *ui;
     QWidget *prev_window;
-    Pessoa* usuario;
+    Usuario* usuario;
     void closeEvent(QCloseEvent *event);
     void preencherDados();
 };

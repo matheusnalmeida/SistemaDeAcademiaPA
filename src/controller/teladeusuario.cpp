@@ -2,14 +2,14 @@
 #include "ui_teladeusuario.h"
 #include <QMessageBox>
 #include <QCloseEvent>
-
+#include "QListWidgetItem"
 teladeusuario::teladeusuario(QWidget *parent,QWidget *prev_window,Pessoa* usuario) :
     QWidget(parent),
     ui(new Ui::teladeusuario)
 {
     ui->setupUi(this);
     this->prev_window = prev_window;
-    this->usuario = usuario;
+    this->usuario = (Usuario*) usuario;
     this->preencherDados();
     //Colcando icones na tela
     QPixmap pix_icon(":/imagem/src/resources/imagem_icon.jpg");
@@ -46,4 +46,16 @@ void teladeusuario::preencherDados(){
     this->ui->texto_email->setText(this->usuario->getEmail());
     this->ui->texto_logradouro->setText(this->usuario->getEndereco()->getLogradouro());
     this->ui->texto_uf->setText(this->usuario->getEndereco()->getUf());
+    std::map<QString, Treino*>* treinos = this->usuario->getTreinos();
+     std::map<QString, Treino*>::iterator itr;
+    if(treinos->size() != 0){
+        for (itr = treinos->begin(); itr != treinos->end(); ++itr) {
+            QListWidgetItem * item = new QListWidgetItem(itr->first);
+            item->setTextAlignment(Qt::AlignHCenter);
+            QFont serifFont("Consolas", 20, QFont::Bold);
+            item->setFont(serifFont);
+            this->ui->listWidget->addItem(item);
+        }
+    }
 }
+
