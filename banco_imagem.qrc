@@ -7,5 +7,6 @@
         <file>src/resources/add_icon.png</file>
         <file>src/resources/delete_icon.png</file>
         <file>src/resources/edit_icon.png</file>
+        <file>src/resources/atualizar_icon.png</file>
     </qresource>
 </RCC>

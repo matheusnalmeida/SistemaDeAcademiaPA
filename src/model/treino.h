@@ -8,12 +8,12 @@ class Treino
 public:
     Treino(QString nome);
     ~Treino();
-    std::map<QString,int>* getMap();
+    std::map<QString,QString>* getMap();
     QString getNome();
-    void adicionarExercicio(QString nome_exercicio, int repeticao);
+    void adicionarExercicio(QString nome_exercicio, QString repeticao);
 private:
     QString nomeDoTreino;
-    std::map<QString, int> *exercicios;
+    std::map<QString, QString> *exercicios;
 };
 
 #endif // TREINO_H

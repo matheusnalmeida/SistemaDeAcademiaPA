@@ -31,6 +31,8 @@ private slots:
 
     void on_listWidget_itemClicked(QListWidgetItem *item);
 
+    void on_pushButton_clicked();
+
 private:
     Ui::DialogCadastrarTreino *ui;
     std::map<QString,Treino*>* bancoDeTreinos;

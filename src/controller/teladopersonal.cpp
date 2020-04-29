@@ -51,6 +51,10 @@ void Teladopersonal::preencherDados(){
 
 void Teladopersonal::on_cadastro_botao_clicked()
 {
+    if (this->banco->getAlunosMatricula()->size() == 0){
+        QMessageBox::information(this,"Aviso","Nenhum aluno cadastrado");
+    }else{
         DialogMostrarUsuarios* DMU = new DialogMostrarUsuarios(nullptr,this,this->banco);
         DMU->exec();
 }
+   }

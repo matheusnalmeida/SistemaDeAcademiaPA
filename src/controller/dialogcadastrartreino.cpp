@@ -1,14 +1,14 @@
 #include "dialogcadastrartreino.h"
 #include "ui_dialogcadastrartreino.h"
-
+#include "dialogcadastrarexercicios.h"
 DialogCadastrarTreino::DialogCadastrarTreino(QWidget *parent,QWidget *prev_window,std::map<QString,Treino*>* bancoDeTreinos) :
     QDialog(parent),
     ui(new Ui::DialogCadastrarTreino)
 {
     ui->setupUi(this);
-    //this->prev_window = prev_window;
-    //this->bancoDeTreinos = bancoDeTreinos;
-    //this->carregarTreinos();
+    this->prev_window = prev_window;
+    this->bancoDeTreinos = bancoDeTreinos;
+    this->carregarTreinos();
     //Carregando icones nos botoes
     QPixmap pixmap_add(":/imagem/src/resources/add_icon.png");
     QIcon ButtonIconAdd(pixmap_add);
@@ -21,6 +21,11 @@ DialogCadastrarTreino::DialogCadastrarTreino(QWidget *parent,QWidget *prev_windo
     QPixmap pixmap_edit(":/imagem/src/resources/edit_icon.png");
     QIcon ButtonIconEdit(pixmap_edit);
     this->ui->edit_button->setIcon(ButtonIconEdit);
+
+    QPixmap pixmap_att(":/imagem/src/resources/atualizar_icon");
+    QIcon ButtonIconAt(pixmap_att);
+    this->ui->pushButton->setIcon(ButtonIconAt);
+
 }
 
 void DialogCadastrarTreino::carregarTreinos(){
@@ -48,6 +53,9 @@ void DialogCadastrarTreino::on_DialogCadastrarTreino_finished(int result)
 void DialogCadastrarTreino::on_add_button_clicked()
 {
 
+   Dialogcadastrarexercicios *cadastrarExercicio = new Dialogcadastrarexercicios(nullptr, this,this->bancoDeTreinos);
+   cadastrarExercicio->exec();
+
 }
 
 void DialogCadastrarTreino::on_delete_button_clicked()
@@ -69,4 +77,10 @@ void DialogCadastrarTreino::on_listWidget_itemClicked(QListWidgetItem *item)
 {
     this->ui->delete_button->setEnabled(true);
     this->ui->edit_button->setEnabled(true);
+}
+
+void DialogCadastrarTreino::on_pushButton_clicked()
+{
+    this->ui->listWidget->clear();
+    this->carregarTreinos();
 }
